@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "*/10 * * * *"     # toutes les 10 minutes (GitHub peut retarder un peu)
+    - cron: "*/5 * * * *"      # toutes les 5 minutes (GitHub peut retarder un peu)
   workflow_dispatch:           # lancement manuel
 
 permissions:

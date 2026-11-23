@@ -22,7 +22,7 @@ const CONFIG = {
     spotify: "data/spotify.json", // { isPlaying, title, artist, album, coverUrl, url, playedAt }
     github: "data/github.json", // { totalContributions, days:[{date,count}], events:[{type,repo,message,at}], languages:[{name,percent}] }
   },
-  pollSpotifyMs: 60000,
+  pollSpotifyMs: 30000,
   pollGithubMs: 600000,
 };
 
