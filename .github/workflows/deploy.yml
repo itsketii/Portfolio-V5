@@ -29,6 +29,13 @@ jobs:
         with:
           node-version: 20
 
+      - name: Vérifier la présence des secrets Spotify
+        run: |
+          if ([string]::IsNullOrEmpty("${{ secrets.SPOTIFY_CLIENT_ID }}")) { throw "SPOTIFY_CLIENT_ID est absent" }
+          if ([string]::IsNullOrEmpty("${{ secrets.SPOTIFY_CLIENT_SECRET }}")) { throw "SPOTIFY_CLIENT_SECRET est absent" }
+          if ([string]::IsNullOrEmpty("${{ secrets.SPOTIFY_REFRESH_TOKEN }}")) { throw "SPOTIFY_REFRESH_TOKEN est absent" }
+        shell: pwsh
+
       - name: Générer les données (Spotify + GitHub)
         run: node scripts/update-data.mjs
         env:
