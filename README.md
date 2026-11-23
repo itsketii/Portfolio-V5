@@ -83,4 +83,4 @@ Comment obtenir ces secrets, étape par étape (création de l'app Spotify, refr
 
 ## Licence
 
-Libre d'utilisation pour ton propre portfolio. Remplace les textes d'exemple par les tiens.
+Libre d'utilisation pour ton propre portfolio.
