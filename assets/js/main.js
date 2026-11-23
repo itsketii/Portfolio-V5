@@ -183,6 +183,13 @@ async function loadSpotify(){
   let t;
   try { t = CONFIG.useMock ? mockSpotify() : await getJSON(CONFIG.data.spotify); } catch(e){ t = null; }
   $("#np").href = CONFIG.spotifyProfileUrl;
+  if (t?.error) {
+    $("#np-title").textContent = "Erreur Spotify";
+    $("#np-artist").textContent = t.error;
+    $("#np-status").textContent = "Configuration";
+    $("#np-dot").classList.add("off");
+    return;
+  }
   if (!t || !t.title) { $("#np-title").textContent = "Rien d'écouté récemment"; $("#np-artist").innerHTML = "&nbsp;"; return; }
   $("#np-cover").innerHTML = coverArt(t);
   $("#np-title").textContent = t.title; $("#np-artist").textContent = t.artist;

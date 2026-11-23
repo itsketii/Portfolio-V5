@@ -109,7 +109,7 @@ for (const [name, fn] of [["spotify", spotify], ["github", github]]) {
   } catch (err) {
     console.error(`✘ ${name}: ${err.message}`);   // on continue : l'autre source reste produite
     if (name === "spotify") {
-      await writeFile(`${OUT}/${name}.json`, "null");
+      await writeFile(`${OUT}/${name}.json`, JSON.stringify({ error: err.message }));
     }
   }
 }
