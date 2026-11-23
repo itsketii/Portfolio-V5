@@ -8,6 +8,9 @@ async function spotify() {
   const id = process.env.SPOTIFY_CLIENT_ID;
   const secret = process.env.SPOTIFY_CLIENT_SECRET;
   const refresh = process.env.SPOTIFY_REFRESH_TOKEN;
+  if (!id || !secret || !refresh) {
+    throw new Error("Spotify credentials missing");
+  }
 
   // 1) refresh token -> access token (valable 1 h)
   const tokRes = await fetch("https://accounts.spotify.com/api/token", {
@@ -101,9 +104,12 @@ async function github() {
 for (const [name, fn] of [["spotify", spotify], ["github", github]]) {
   try {
     const data = await fn();
-    if (data) await writeFile(`${OUT}/${name}.json`, JSON.stringify(data));
+    await writeFile(`${OUT}/${name}.json`, JSON.stringify(data));
     console.log(`✔ ${name}`);
   } catch (err) {
     console.error(`✘ ${name}: ${err.message}`);   // on continue : l'autre source reste produite
+    if (name === "spotify") {
+      await writeFile(`${OUT}/${name}.json`, "null");
+    }
   }
 }
