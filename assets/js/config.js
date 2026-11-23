@@ -23,6 +23,7 @@ const CONFIG = {
     github: "data/github.json", // { totalContributions, days:[{date,count}], events:[{type,repo,message,at}], languages:[{name,percent}] }
   },
   pollSpotifyMs: 60000,
+  pollGithubMs: 600000,
 };
 
 const PROJECTS = [

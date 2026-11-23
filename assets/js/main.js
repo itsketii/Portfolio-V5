@@ -249,6 +249,7 @@ async function loadGithub(){
   $("#lang-l").innerHTML = L.map((l,i) => `<span style="--o:${1-i*.22}">${esc(l.name)} ${l.percent}%</span>`).join("");
 }
 loadGithub(); loadWeather();
+setInterval(loadGithub, CONFIG.pollGithubMs);
 
 /* =====================================================================
    Apparition (flou -> net) au chargement et au scroll
