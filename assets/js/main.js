@@ -11,12 +11,12 @@ async function getJSON(url){ const r = await fetch(url + (url.includes("?") ? "&
 /* =====================================================================
    Réglages (fond, police, effets)
    ===================================================================== */
-const COLORS = ["#1535f0","#0a0a0a","#1b1b1b","#d3111c","#dd8e0a","#22e83a","#22d3c5","#bf00bf"];
+const COLORS = ["#372067","#1535f0","#0a0a0a","#1b1b1b","#d3111c","#dd8e0a","#22e83a","#22d3c5","#bf00bf"];
 const FONTS = [
   ["Inter","'Inter'"],["Geist","'Geist'"],["Manrope","'Manrope'"],
   ["Bricolage","'Bricolage Grotesque'"],["Archivo Narrow","'Archivo Narrow'"],["Inconsolata","'Inconsolata'"]
 ];
-const DEFAULTS = { bg:"#1535f0", font:"Inter", finish:"flat", container:0, noise:20, fps:6, scan:0, motion:100, borders:20 };
+const DEFAULTS = { bg:"#372067", font:"Inter", finish:"flat", container:1, noise:34, fps:18, scan:39, motion:156, borders:45 };
 let S = { ...DEFAULTS };
 
 function lum(hex){
@@ -118,6 +118,8 @@ $("#p-name").textContent = CONFIG.name; $("#p-role").textContent = CONFIG.role;
 $("#avatar").textContent = CONFIG.name.split(" ").map(w=>w[0]).join("").slice(0,2).toUpperCase();
 $("#loc").textContent = CONFIG.location; $("#yr").textContent = new Date().getFullYear();
 $("#gh-link").href = `https://github.com/${CONFIG.githubUser}`;
+$("#email-link").href = `mailto:${CONFIG.email}`;
+$("#linkedin-link").href = CONFIG.linkedinUrl;
 
 $("#work").innerHTML = PROJECTS.map(p =>
   `<li><span><b>${esc(p.name)}</b>${p.meta?`<small>${esc(p.meta)}</small>`:""}</span>${p.archived?'<span class="arch">Archivé</span>':`<a href="${esc(p.url)}" target="_blank" rel="noopener">Voir le site ↗</a>`}</li>`).join("");
@@ -180,8 +182,8 @@ function coverArt(t){
 async function loadSpotify(){
   let t;
   try { t = CONFIG.useMock ? mockSpotify() : await getJSON(CONFIG.data.spotify); } catch(e){ t = null; }
+  $("#np").href = CONFIG.spotifyProfileUrl;
   if (!t || !t.title) { $("#np-title").textContent = "Rien d'écouté récemment"; $("#np-artist").innerHTML = "&nbsp;"; return; }
-  $("#np").href = t.url || "#";
   $("#np-cover").innerHTML = coverArt(t);
   $("#np-title").textContent = t.title; $("#np-artist").textContent = t.artist;
   $("#np-status").textContent = t.isPlaying ? "En écoute" : rel(t.playedAt);

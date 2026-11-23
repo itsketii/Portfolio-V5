@@ -4,11 +4,14 @@
 const CONFIG = {
   name: "Kouadio Ketsia",
   role: "DéveloppeuseFull-Stack",
-  location: "Abidjan, CI",
+  location: "Grand-Bassam, CI",
   timezone: "Africa/Abidjan",
   githubUser: "itsketii",
+  email: "ketsia.kouadio@iit.ci",
+  linkedinUrl: "https://www.linkedin.com/in/ketsia-marie-aude-kouadio-75bb42415/",
+  spotifyProfileUrl: "https://open.spotify.com/user/31vzizvh2i5xak4ngcbkct7t4ime?si=e7b8787a9ac94f00",
 
-  coords: { lat: 5.214247, lon:  -3.780940 }, // pour la météo (Abidjan)
+  coords: { lat: 5.212884, lon: -3.743226 }, // Grand-Bassam
 
   /* Données simulées si le fichier est ouvert directement (file://), vraies données une fois en ligne.
      Pour forcer : true = toujours simulées, false = toujours réelles. */
@@ -26,10 +29,10 @@ const PROJECTS = [
   { name: "Carnet de contacts", meta: "Django · SQLite", url: "#" },
   { name: "Boutique en ligne", meta: "Django · Stripe", url: "#" },
   { name: "Tableau de bord RH", meta: "Django REST · Chart.js", url: "#" },
-  { name: "Gestion de stock", meta: null, archived: true },
-  { name: "Blog personnel", meta: null, archived: true },
-  { name: "Application mobile", meta: null, archived: true },
-  { name: "Site associatif", meta: null, archived: true },
+  { name: "Gestion de stock", meta: null, url: "#" },
+  { name: "Blog personnel", meta: null, url: "#" },
+  { name: "Application mobile", meta: null, url: "#" },
+  { name: "Site associatif", meta: null, url: "#" },
 ];
 
 const TESTIMONIALS = [
