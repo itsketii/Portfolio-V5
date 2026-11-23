@@ -26,13 +26,13 @@ const CONFIG = {
 };
 
 const PROJECTS = [
-  { name: "Carnet de contacts", meta: "Django · SQLite", url: "#" },
-  { name: "Boutique en ligne", meta: "Django · Stripe", url: "#" },
-  { name: "Tableau de bord RH", meta: "Django REST · Chart.js", url: "#" },
-  { name: "Gestion de stock", meta: null, url: "#" },
-  { name: "Blog personnel", meta: null, url: "#" },
-  { name: "Application mobile", meta: null, url: "#" },
-  { name: "Site associatif", meta: null, url: "#" },
+  { name: "Outil de web scraping", meta: "Python · SQLite", url: "#https://github.com/itsketii/Projet-1-WEB-SCRAPING" },
+  { name: "Application décisionnelle d'analyse comparative", meta: "Python", url: "#https://github.com/itsketii/Projet-2-ANALYSE-COMPARATIVE" },
+  { name: "Application de gestion universitaire", meta: "C# · SQL Server · Windows form", url: "#https://github.com/itsketii/GestionUniversite" },
+  { name: "Application de bureau de gestion de tresorerie", meta: "C# · MySQL · Windows form", url: "#" },
+  { name: "Blog : IIT Underground", meta: "Python · JS · CSS · HTML5", url: "https://github.com/itsketii/mini-application-django" },
+  { name: "Application mobile : Orient CI", meta: "Flutter · Dart · FireBase · JS", url: "https://github.com/itsketii/OrientCI" },
+  { name: " Mini-Bibliothèque", meta: "Python · JS · CSS · HTML5", url: "#https://github.com/itsketii/mini-bibliotheque" },
 ];
 
 const TESTIMONIALS = [
