@@ -8,9 +8,12 @@ async function spotify() {
   const id = process.env.SPOTIFY_CLIENT_ID;
   const secret = process.env.SPOTIFY_CLIENT_SECRET;
   const refresh = process.env.SPOTIFY_REFRESH_TOKEN;
-  if (!id || !secret || !refresh) {
-    throw new Error("Spotify credentials missing");
-  }
+  const missing = [
+    ["SPOTIFY_CLIENT_ID", id],
+    ["SPOTIFY_CLIENT_SECRET", secret],
+    ["SPOTIFY_REFRESH_TOKEN", refresh],
+  ].filter(([, value]) => !value).map(([name]) => name);
+  if (missing.length) throw new Error(`Spotify secrets missing: ${missing.join(", ")}`);
 
   // 1) refresh token -> access token (valable 1 h)
   const tokRes = await fetch("https://accounts.spotify.com/api/token", {
