@@ -24,7 +24,7 @@ const CONFIG = {
   },
   /* URL de ton Cloudflare Worker (temps réel). Laisse "" tant qu'il n'est pas créé :
      le site utilisera alors data/spotify.json (mis à jour seulement quand le workflow tourne). */
-  spotifyApi: "",
+  spotifyApi: "https://spotify-last-played.ketsia-kouadio.workers.dev",
   pollSpotifyMs: 30000,
   pollGithubMs: 600000,
 };
