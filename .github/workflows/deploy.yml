@@ -45,7 +45,10 @@ jobs:
           GH_USER: ${{ github.repository_owner }}
 
       - name: Assembler le site
-        run: cp -r index.html assets _site/
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp -r assets _site/
 
       - uses: actions/configure-pages@v5
 
