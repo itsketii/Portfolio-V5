@@ -22,6 +22,9 @@ const CONFIG = {
     spotify: "data/spotify.json", // { isPlaying, title, artist, album, coverUrl, url, playedAt }
     github: "data/github.json", // { totalContributions, days:[{date,count}], events:[{type,repo,message,at}], languages:[{name,percent}] }
   },
+  /* URL de ton Cloudflare Worker (temps réel). Laisse "" tant qu'il n'est pas créé :
+     le site utilisera alors data/spotify.json (mis à jour seulement quand le workflow tourne). */
+  spotifyApi: "",
   pollSpotifyMs: 30000,
   pollGithubMs: 600000,
 };

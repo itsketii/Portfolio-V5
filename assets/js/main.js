@@ -179,9 +179,13 @@ function coverArt(t){
     radial-gradient(circle at 70% 70%,hsl(${h} 85% 50%) 0 25%,transparent 26%),
     linear-gradient(170deg,hsl(${h+210} 45% 22%) 0 55%,hsl(${h} 75% 45%) 55%)"></div>`;
 }
+async function fetchSpotify(){
+  if (CONFIG.spotifyApi) { try { return await getJSON(CONFIG.spotifyApi); } catch(e){} }   // temps réel (Worker)
+  return getJSON(CONFIG.data.spotify);                                                      // secours : fichier statique
+}
 async function loadSpotify(){
   let t;
-  try { t = CONFIG.useMock ? mockSpotify() : await getJSON(CONFIG.data.spotify); } catch(e){ t = null; }
+  try { t = CONFIG.useMock ? mockSpotify() : await fetchSpotify(); } catch(e){ t = null; }
   $("#np").href = CONFIG.spotifyProfileUrl;
   if (t?.error) {
     $("#np-title").textContent = "Erreur Spotify";
