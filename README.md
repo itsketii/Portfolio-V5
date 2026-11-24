@@ -49,11 +49,11 @@ Pour tester avec un petit serveur local : `python -m http.server 8000`, puis `ht
 
 Tout se passe dans **`assets/js/config.js`** :
 
-| Élément | Où |
-|---------|----|
-| Nom, titre, ville, fuseau horaire, pseudo GitHub, coordonnées météo | `CONFIG` |
-| Projets | `PROJECTS` |
-| Témoignages | `TESTIMONIALS` |
+| Élément                                                              | Où              |
+| ---------------------------------------------------------------------- | ---------------- |
+| Nom, titre, ville, fuseau horaire, pseudo GitHub, coordonnées météo | `CONFIG`       |
+| Projets                                                                | `PROJECTS`     |
+| Témoignages                                                           | `TESTIMONIALS` |
 
 Le texte de présentation, les liens (email, LinkedIn) et le pied de page se modifient dans `index.html`.
 
@@ -62,14 +62,12 @@ Le texte de présentation, les liens (email, LinkedIn) et le pied de page se mod
 1. Crée un dépôt **public** sur GitHub et pousse ce projet sur la branche `main`.
 2. **Settings → Pages → Source : GitHub Actions**.
 3. Ajoute les secrets : **Settings → Secrets and variables → Actions**.
-
-   | Secret | Rôle |
-   |--------|------|
-   | `SPOTIFY_CLIENT_ID` | identifiant de l'app Spotify |
-   | `SPOTIFY_CLIENT_SECRET` | secret de l'app Spotify |
-   | `SPOTIFY_REFRESH_TOKEN` | autorisation de lecture de ton historique |
-   | `GH_PAT` | token GitHub (scope `read:user`) pour la grille de contributions |
-
+   | Secret                    | Rôle                                                              |
+   | ------------------------- | ------------------------------------------------------------------ |
+   | `SPOTIFY_CLIENT_ID`     | identifiant de l'app Spotify                                       |
+   | `SPOTIFY_CLIENT_SECRET` | secret de l'app Spotify                                            |
+   | `SPOTIFY_REFRESH_TOKEN` | autorisation de lecture de ton historique                          |
+   | `GH_PAT`                | token GitHub (scope `read:user`) pour la grille de contributions |
 4. **Actions → Build & deploy → Run workflow**. Vérifie `✔ spotify` et `✔ github` dans les logs, puis ouvre le site.
 
 Comment obtenir ces secrets, étape par étape (création de l'app Spotify, refresh token, token GitHub, alternative Last.fm sans Premium, dépannage) : **[docs/GUIDE-SPOTIFY-GITHUB.md](docs/GUIDE-SPOTIFY-GITHUB.md)**.
@@ -80,6 +78,25 @@ Comment obtenir ces secrets, étape par étape (création de l'app Spotify, refr
 - GitHub désactive les workflows planifiés après 60 jours sans activité dans le dépôt : pousse un commit ou réactive-le dans l'onglet Actions.
 - Spotify exige un compte **Premium** pour le propriétaire d'une app en mode développement (règle de février 2026). Sans Premium, utilise Last.fm (voir le guide).
 - Ne jamais écrire un secret dans le code ou dans un commit.
+
+## Problemes rencotrés
+
+24/11/2026 - Bug GitHub Pages
+
+Cause :
+Le dossier _site n'était pas correctement construit avant upload.
+
+Mauvais :
+cp -r index.html assets _site/
+
+Correct :
+mkdir -p _site
+cp index.html _site/
+cp -r assets _site/
+
+Conséquence :
+Le déploiement GitHub Pages échouait alors que l'artefact était créé avec succès.
+
 
 ## Licence
 
